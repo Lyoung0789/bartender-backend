@@ -17,13 +17,18 @@ class RecipesController < ApplicationController
         render json: @recipe
     end 
 
-
+    def update
+        # binding.pry
+        @recipe = Recipe.find_by(id:params[:id])
+        @recipe.update(recipe_params)
+        render json: @recipe
+    end 
 
 
     private 
     
     def recipe_params
-        params.require(:recipe).permit(:title, :instructions, :liquor)
+        params.require(:recipe).permit(:title, :instructions, :liquor, :likes)
     end 
 
 end
