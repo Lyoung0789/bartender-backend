@@ -13,6 +13,7 @@ class ReviewsController < ApplicationController
   
     def create 
         @review = Review.create(review_params)
+        # binding.pry
         render json: @review
     end
 
