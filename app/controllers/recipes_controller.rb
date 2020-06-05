@@ -11,14 +11,14 @@ class RecipesController < ApplicationController
     end 
 
     def create 
-        # byebug
+        
         @recipe = Recipe.create(recipe_params)
-        # byebug
+        
         render json: @recipe
     end 
 
     def update
-        # binding.pry
+        
         @recipe = Recipe.find_by(id:params[:id])
         @recipe.update(recipe_params)
         render json: @recipe
