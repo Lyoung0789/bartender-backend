@@ -11,8 +11,12 @@ class ReviewsController < ApplicationController
     end 
   
     def create 
-        @review = Review.create(review_params)
-        render json: @review
+        @review = Review.new(review_params)
+        if @review.save
+            render json: @review
+        else 
+            render :json => { :error => @review.errors } 
+        end 
     end
 
 

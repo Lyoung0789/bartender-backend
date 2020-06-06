@@ -11,8 +11,12 @@ class RecipesController < ApplicationController
     end 
 
     def create 
-        @recipe = Recipe.create(recipe_params)
-        render json: @recipe
+        @recipe = Recipe.new(recipe_params)
+        if @recipe.save
+            render json: @recipe
+        else 
+            render :json => { :error => @recipe.errors.full_messages } 
+        end 
     end 
 
     def update
