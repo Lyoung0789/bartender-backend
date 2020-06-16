@@ -1,21 +1,21 @@
 class ReviewsController < ApplicationController
 
     def index 
-        @reviews = Review.all
-        render json: @reviews
+        reviews = Review.all
+        render json: reviews
     end 
 
     def show
-        @review = Review.find_by(id: params[:id])
-        render json: @review
+        review = Review.find_by(id: params[:id])
+        render json: review
     end 
   
     def create 
-        @review = Review.new(review_params)
-        if @review.save
-            render json: @review
+        review = Review.new(review_params)
+        if review.save
+            render json: review
         else 
-            render :json => { :error => @review.errors } 
+            render :json => { :error => review.errors } 
         end 
     end
 
